@@ -1,0 +1,220 @@
+{
+  "runtime": "V6.5 CompanyLine Foundation",
+  "files": [
+    {
+      "path": "COLAB_USAGE.txt",
+      "bytes": 1527,
+      "sha256": "3dd7e50ba907a4cb6065426f09aeb46b1bbf2f2e34846c1705f7444e543d0d56"
+    },
+    {
+      "path": "PATCH_NOTES_V6_4.md",
+      "bytes": 1372,
+      "sha256": "e45b0763ea5a9446c8f63cac7cda5ba19735a602811e5aeb12d13fd00bea0265"
+    },
+    {
+      "path": "PATCH_NOTES_V6_4_1.md",
+      "bytes": 701,
+      "sha256": "a62c32a3e6eb4723c7296dcb95bfd70787d1dc7487fcbdde721928fa5418f131"
+    },
+    {
+      "path": "PATCH_NOTES_V6_4_2.md",
+      "bytes": 951,
+      "sha256": "09ca57b6d232d59f89ac14d9a94b28a5f3fc69e24c74629d55904c74cec57413"
+    },
+    {
+      "path": "PATCH_NOTES_V6_4_3.md",
+      "bytes": 1180,
+      "sha256": "a6e5fe2cba7bf340272d50f43d4bc1ef60f8da40b065f739eb951f8c5772b1b5"
+    },
+    {
+      "path": "PATCH_NOTES_V6_5.md",
+      "bytes": 461,
+      "sha256": "32f76673a418959b3e5051d0623eb8bac7592a4d4b33e2a7577af52f9407e6e7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1764,
+      "sha256": "248a5bf8ed8d889b6eb45e73592f34ed5b1bd964593c209b84888ec9c6454f7a"
+    },
+    {
+      "path": "VALIDATION_REPORT.json",
+      "bytes": 1209,
+      "sha256": "7ba49417da0e7073c9a1858a1093620bd5110f01a00f1de5393c360833a5e39f"
+    },
+    {
+      "path": "VERSION",
+      "bytes": 28,
+      "sha256": "b36aa38bd7a2212a73bb6cca19c4869c0f0dd94e53e49b2f898f5126ee91e8e4"
+    },
+    {
+      "path": "build_manifest.json",
+      "bytes": 4203,
+      "sha256": "5301c4048eb0e3f879046c64e4fd115a8600b4c3574c6cfe510fdafeb17b563f"
+    },
+    {
+      "path": "diagnose_runtime.py",
+      "bytes": 1762,
+      "sha256": "304cf8430d2b9ec056ae44a748b29d5a9e305167a96a1c0bb7ebd409e60e811f"
+    },
+    {
+      "path": "mvhd_ad/__init__.py",
+      "bytes": 1012,
+      "sha256": "e5086d4ec98ab99366c26f39bbb52aa03f8d760e5db0d2b8ff1b2816a811efd5"
+    },
+    {
+      "path": "mvhd_ad/array_codec.py",
+      "bytes": 654,
+      "sha256": "ee7d59a6d1bf1f9ddcbf21731bd0ecad31053cda28160ae8c6b3d6f4dbf33e7d"
+    },
+    {
+      "path": "mvhd_ad/artifact_paths.py",
+      "bytes": 1348,
+      "sha256": "0fbc6f61f83f964975bc4536c07a40e1c643fffa89308f375a1c74f33131c568"
+    },
+    {
+      "path": "mvhd_ad/audit.py",
+      "bytes": 1473,
+      "sha256": "fa965af9a729b8e3a6c04c64184aafe838944dac3dc7e6eba1c2ead11b1d0436"
+    },
+    {
+      "path": "mvhd_ad/bundle.py",
+      "bytes": 4790,
+      "sha256": "a940894cf8784275649f89b9162ca8000167d486fe79028d2c59d24280445e97"
+    },
+    {
+      "path": "mvhd_ad/calibration.py",
+      "bytes": 2821,
+      "sha256": "be1867d964d227ba7e7561a91e7b354510ce8fdd2c40bf18eac58ac056cfb560"
+    },
+    {
+      "path": "mvhd_ad/config.py",
+      "bytes": 3596,
+      "sha256": "3cdd8f7ce16cb0cefcd32e726ca4fb22616d02649d6fa57b34ac7df6eaddd77c"
+    },
+    {
+      "path": "mvhd_ad/decision_policy.py",
+      "bytes": 2794,
+      "sha256": "5abe75d321be055c535568aee765d5194a510cc6c48d3e937bd8948cb44076a2"
+    },
+    {
+      "path": "mvhd_ad/deployment.py",
+      "bytes": 1383,
+      "sha256": "35d44a67df97d116a63792f4128a3d4f4832a1cfb7ad7ed882e8f33dc555a389"
+    },
+    {
+      "path": "mvhd_ad/drift.py",
+      "bytes": 2109,
+      "sha256": "a466c5a83480aa291aa137b520b5988a62e2d73fdc0bc0c25a1b164f866a238e"
+    },
+    {
+      "path": "mvhd_ad/export.py",
+      "bytes": 16053,
+      "sha256": "5539d709f05fc4d53e25dd76e3c72d35f075a30f085540ee72e97acf79b36f5d"
+    },
+    {
+      "path": "mvhd_ad/infer.py",
+      "bytes": 3162,
+      "sha256": "94cb2b19adaaa06beda110e64ea7e5ccb47e7b1f6679272182a9f0ccd705008d"
+    },
+    {
+      "path": "mvhd_ad/input_guard.py",
+      "bytes": 3083,
+      "sha256": "856a9336411ce269c8b6d177c8de81f2827eaec516db1f007e3adeb71591a1a1"
+    },
+    {
+      "path": "mvhd_ad/line_runtime.py",
+      "bytes": 3264,
+      "sha256": "c849674b38410966c8b738cc955be8f9469371d67eac4655a5a7ea70e0e11f54"
+    },
+    {
+      "path": "mvhd_ad/localization.py",
+      "bytes": 11160,
+      "sha256": "8b3a066358e00fb19e88bc5c6bcf4c438ea18cff027de1369e94cba3cd56349a"
+    },
+    {
+      "path": "mvhd_ad/metrics.py",
+      "bytes": 1976,
+      "sha256": "81d83faa4e98b11a2604e808002313c9f7b46db3e2644da3a7c7bc2a3e49291e"
+    },
+    {
+      "path": "mvhd_ad/operating_window.py",
+      "bytes": 4031,
+      "sha256": "9da86931d0cd898c40c48fdac6e3530505dfb79abc976d0cf5046d2cbcdfd367"
+    },
+    {
+      "path": "mvhd_ad/preprocess.py",
+      "bytes": 11457,
+      "sha256": "a60428bb77e4d88c04ff336a98653ff92912e7bb767ef22928cde250ce09ebc9"
+    },
+    {
+      "path": "mvhd_ad/production_gate.py",
+      "bytes": 2599,
+      "sha256": "587e18a69e52ef15d4c6d3df624259b88e86de5affd62ce986d8f8d08c40c36a"
+    },
+    {
+      "path": "mvhd_ad/protocol.py",
+      "bytes": 11427,
+      "sha256": "1828ea59ac32bdf7770252356919cdccced409db14ce617c13950560000a550d"
+    },
+    {
+      "path": "mvhd_ad/recipe.py",
+      "bytes": 1904,
+      "sha256": "9a55738e55748125c984ee6dd7ce450fc8bf51c0bd5422b64cd6b6da3b019c07"
+    },
+    {
+      "path": "mvhd_ad/roi_sim.py",
+      "bytes": 1544,
+      "sha256": "9a5baff08ec0c1a8b3999f2ef853757d6fda1a26474d4b1964acdbcc60cc70e3"
+    },
+    {
+      "path": "mvhd_ad/runners/__init__.py",
+      "bytes": 95,
+      "sha256": "7538f0a61ec328585f646b21b19d57b84854bd932d8afa1c55149197cb5b515d"
+    },
+    {
+      "path": "mvhd_ad/runners/anomalib_runner.py",
+      "bytes": 7240,
+      "sha256": "c080a96e162730423a17a0152ee6e5b8aa87056a0b578d54fb8503578c7c977c"
+    },
+    {
+      "path": "mvhd_ad/train.py",
+      "bytes": 4971,
+      "sha256": "d9b6d29b87c0f05fa8bd7450f3bb82c62a35e5da6e2ec5d66452cb2661461bdf"
+    },
+    {
+      "path": "mvhd_ad/types.py",
+      "bytes": 509,
+      "sha256": "ba954f69acb0607f0a04176324619776c2ad63ac74341ace967c20f236e1fde5"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 263,
+      "sha256": "ec5d7bcb6ac5ce09213ede10e98c20b53ea451378b4ac36a5f220e9203e84628"
+    },
+    {
+      "path": "requirements_colab.txt",
+      "bytes": 263,
+      "sha256": "ec5d7bcb6ac5ce09213ede10e98c20b53ea451378b4ac36a5f220e9203e84628"
+    },
+    {
+      "path": "smoke_test_no_anomalib.py",
+      "bytes": 1603,
+      "sha256": "6201061ce5b648494d1079704b4af33872bf8a5804a3dfb7f9737fba950be331"
+    },
+    {
+      "path": "tests/test_profile_codec.py",
+      "bytes": 226,
+      "sha256": "8be9dfa2e93604aa05b7e329209a738ec459b1aa8b724041cae25837d7ab0c23"
+    },
+    {
+      "path": "tests/test_protocol_counts.py",
+      "bytes": 590,
+      "sha256": "9979bfcb1a3e6569d38d08fc8042b0d23384ed3e165aef541024023d93955ea9"
+    },
+    {
+      "path": "tests/test_static_runtime.py",
+      "bytes": 894,
+      "sha256": "9651f107ca5070dc33ed97b4a47bb6f63f89748c719e7bddc06f7c873e33e0c5"
+    }
+  ]
+}
