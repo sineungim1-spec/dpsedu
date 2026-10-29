@@ -1,0 +1,20 @@
+# Source and corporate data must not be pushed without express permission
+**/model.ckpt
+**/*.ckpt
+**/*.pt
+**/*.pth
+**/*.onnx
+**/*.safetensors
+**/samples/good/*
+**/samples/bad/*
+**/outputs/
+**/__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+qr-output/
+*.log
