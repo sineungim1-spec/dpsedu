@@ -1,0 +1,105 @@
+{
+  "model_name": "Candidate4 E07-S · EfficientAD-S",
+  "model_SHA256": "736266a37af3c16c0b3445a0505977851592b6fe5103ca4e744d146179ae6bc0",
+  "review_low": 0.21444829232516993,
+  "ng_high": 0.5438568345905579,
+  "final_test": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.21444829232516993,
+    "accuracy": 0.75,
+    "precision": 0.6956521739130435,
+    "recall": 1.0,
+    "specificity": 0.4166666666666667,
+    "f1": 0.8205128205128205,
+    "tn": 20,
+    "fp": 28,
+    "fn": 0,
+    "tp": 64,
+    "n": 112,
+    "triage_counts": {
+      "OK": 20,
+      "REVIEW": 38,
+      "NG": 54,
+      "n": 112
+    }
+  },
+  "final_test_high_confidence_ng": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.5438568345905579,
+    "accuracy": 0.8392857142857143,
+    "precision": 0.9259259259259259,
+    "recall": 0.78125,
+    "specificity": 0.9166666666666666,
+    "f1": 0.847457627118644,
+    "tn": 44,
+    "fp": 4,
+    "fn": 14,
+    "tp": 50,
+    "n": 112
+  },
+  "line_policy_final_test": {
+    "schema_version": 6.9,
+    "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+    "counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "raw_score_triage_counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "fusion_reasons": {
+      "SCORE_AUTO_OK": 20,
+      "SCORE_REVIEW_BAND": 38,
+      "SCORE_AUTO_NG": 54
+    },
+    "visible_candidate_hits": {
+      "good": 6,
+      "bad": 35
+    },
+    "safety_candidate_hits": {
+      "good": 31,
+      "bad": 60
+    },
+    "good_n": 48,
+    "bad_n": 64,
+    "n": 112,
+    "bad_auto_pass_escape": 0,
+    "bad_auto_pass_escape_rate": 0.0,
+    "good_auto_reject": 4,
+    "good_auto_reject_rate": 0.08333333333333333,
+    "good_auto_ok": 20,
+    "good_auto_ok_rate": 0.4166666666666667,
+    "bad_auto_ng": 50,
+    "bad_auto_ng_rate": 0.78125,
+    "review_n": 38,
+    "review_rate": 0.3392857142857143,
+    "target_good_ng_le_1": false,
+    "target_bad_ok_le_1": true,
+    "target_review_le_40pct": true,
+    "monotonicity": {
+      "score_NG_downgraded": 0,
+      "localization_promoted_nonNG_to_NG": 0,
+      "safety_OK_to_REVIEW_promotions": 0,
+      "passed": true
+    }
+  }
+}
