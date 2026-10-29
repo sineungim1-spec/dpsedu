@@ -1,0 +1,45 @@
+{
+  "schema_version": 6.9,
+  "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+  "ok_cut": 0.21444829232516993,
+  "ng_cut": 0.5438568345905579,
+  "safety_review_floor": 0.21444829232516993,
+  "safety_fail_safe_enabled": false,
+  "safety_requires_visible_agreement": true,
+  "selection_data": "CALIBRATION_ONLY",
+  "final_test_used_for_selection": false,
+  "constraints": {
+    "max_bad_ok": 1,
+    "max_good_ng": 1
+  },
+  "calibration_counts": {
+    "good": {
+      "OK": 25,
+      "REVIEW": 23,
+      "NG": 1
+    },
+    "bad": {
+      "OK": 1,
+      "REVIEW": 16,
+      "NG": 47
+    }
+  },
+  "calibration_reasons": {
+    "SCORE_AUTO_OK": 26,
+    "SCORE_REVIEW_BAND": 39,
+    "SCORE_AUTO_NG": 48
+  },
+  "calibration_bad_ok": 1,
+  "calibration_good_ng": 1,
+  "calibration_review_n": 39,
+  "calibration_review_rate": 0.34513274336283184,
+  "feasible": true,
+  "score_is_primary_decision": true,
+  "localization_role": "EXPLANATION_AND_DISPLAY",
+  "safety_role": "LIMITED_OK_TO_REVIEW_FAIL_SAFE_ONLY",
+  "ng_downgrade_allowed": false,
+  "review_to_ng_by_localization_allowed": false,
+  "auto_ok_rule": "score < ok_cut, except optional dual-evidence safety hold inside the calibrated borderline-OK band",
+  "auto_ng_rule": "score >= ng_cut; localization is not required and cannot downgrade NG",
+  "review_rule": "ok_cut <= score < ng_cut, plus optional calibrated borderline-OK safety hold"
+}

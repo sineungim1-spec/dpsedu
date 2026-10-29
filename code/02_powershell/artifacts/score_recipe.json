@@ -1,0 +1,7 @@
+{
+  "schema_version": 6.9,
+  "selected_recipe": "V69_PF1_DECISION_HEAD",
+  "decision_model": "decision_model.json",
+  "selection_data": "CALIBRATION_ONLY",
+  "final_test_used_for_selection": false
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 6.5,
+  "profiles": {
+    "COMPANY_REFERENCE": {
+      "image_size": 256,
+      "batch_size": 1,
+      "visualizer": false,
+      "decision": "raw OK/REVIEW/NG + ACTION/SAFETY fused production triage",
+      "input_guard": true,
+      "audit": true,
+      "purpose": "line-quality-assist reference"
+    },
+    "EDU_LIGHT": {
+      "image_size": 256,
+      "training_epochs_recommended": 2,
+      "batch_size": 1,
+      "visualizer": false,
+      "purpose": "teacher training / reproducible educational model building"
+    },
+    "EDGE_PREP": {
+      "image_size": 256,
+      "batch_size": 1,
+      "visualizer": false,
+      "recommended_targets": [
+        "ONNX",
+        "OpenVINO"
+      ],
+      "note": "Actual graph export is performed only when the installed Anomalib/torch backend supports the target; numerical parity must be validated before deployment."
+    }
+  }
+}

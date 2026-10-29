@@ -1,0 +1,288 @@
+{
+  "schema_version": 6.9,
+  "score_definition": "V6.9-PF1 calibration-supervised decision score (EfficientAD spatial features)",
+  "score_recipe": "V69_PF1_DECISION_HEAD",
+  "calibration": {
+    "image_AUROC": 0.9221938775510203,
+    "image_AUPR": 0.9477527423036265,
+    "threshold": 0.21444829232516993,
+    "accuracy": 0.7787610619469026,
+    "precision": 0.7241379310344828,
+    "recall": 0.984375,
+    "specificity": 0.5102040816326531,
+    "f1": 0.8344370860927153,
+    "tn": 25,
+    "fp": 24,
+    "fn": 1,
+    "tp": 63,
+    "n": 113,
+    "triage_counts": {
+      "OK": 26,
+      "REVIEW": 39,
+      "NG": 48,
+      "n": 113
+    }
+  },
+  "final_test": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.21444829232516993,
+    "accuracy": 0.75,
+    "precision": 0.6956521739130435,
+    "recall": 1.0,
+    "specificity": 0.4166666666666667,
+    "f1": 0.8205128205128205,
+    "tn": 20,
+    "fp": 28,
+    "fn": 0,
+    "tp": 64,
+    "n": 112,
+    "triage_counts": {
+      "OK": 20,
+      "REVIEW": 38,
+      "NG": 54,
+      "n": 112
+    }
+  },
+  "final_test_high_confidence_ng": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.5438568345905579,
+    "accuracy": 0.8392857142857143,
+    "precision": 0.9259259259259259,
+    "recall": 0.78125,
+    "specificity": 0.9166666666666666,
+    "f1": 0.847457627118644,
+    "tn": 44,
+    "fp": 4,
+    "fn": 14,
+    "tp": 50,
+    "n": 112
+  },
+  "line_policy_final_test": {
+    "schema_version": 6.9,
+    "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+    "counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "raw_score_triage_counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "fusion_reasons": {
+      "SCORE_AUTO_OK": 20,
+      "SCORE_REVIEW_BAND": 38,
+      "SCORE_AUTO_NG": 54
+    },
+    "visible_candidate_hits": {
+      "good": 6,
+      "bad": 35
+    },
+    "safety_candidate_hits": {
+      "good": 31,
+      "bad": 60
+    },
+    "good_n": 48,
+    "bad_n": 64,
+    "n": 112,
+    "bad_auto_pass_escape": 0,
+    "bad_auto_pass_escape_rate": 0.0,
+    "good_auto_reject": 4,
+    "good_auto_reject_rate": 0.08333333333333333,
+    "good_auto_ok": 20,
+    "good_auto_ok_rate": 0.4166666666666667,
+    "bad_auto_ng": 50,
+    "bad_auto_ng_rate": 0.78125,
+    "review_n": 38,
+    "review_rate": 0.3392857142857143,
+    "target_good_ng_le_1": false,
+    "target_bad_ok_le_1": true,
+    "target_review_le_40pct": true,
+    "monotonicity": {
+      "score_NG_downgraded": 0,
+      "localization_promoted_nonNG_to_NG": 0,
+      "safety_OK_to_REVIEW_promotions": 0,
+      "passed": true
+    }
+  },
+  "localization_validation": {
+    "labeled_bad_images": 0,
+    "good_red_image_fp": 3,
+    "good_n": 48,
+    "good_red_image_fp_rate": 0.0625,
+    "bad_candidate_image_hit": 34,
+    "bad_n": 64,
+    "bad_candidate_image_recall": 0.53125,
+    "lesion_hit": 0,
+    "lesion_total": 0,
+    "lesion_hit_recall": null,
+    "pixel_precision": null,
+    "pixel_recall": null,
+    "pixel_f1": null,
+    "pixel_iou": null,
+    "localization_100_percent_pass": false,
+    "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+    "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks.",
+    "ground_truth_masks_found_calibration": 0,
+    "ground_truth_masks_found_final_test": 0,
+    "calibration_diagnostics": {
+      "action_thresholds": {
+        "anomaly_z": 6.5,
+        "residual_z": 3.5,
+        "strong_anomaly_z": 16.0,
+        "min_area": 4,
+        "boundary_multiplier": 1.2,
+        "calibration_method": "good_red_image_fp_le_1_then_max_bad_hit",
+        "role": "ACTION_VISIBLE_RED"
+      },
+      "safety_thresholds": {
+        "anomaly_z": 2.0,
+        "residual_z": 1.2,
+        "strong_anomaly_z": 7.0,
+        "min_area": 12,
+        "boundary_multiplier": 1.35,
+        "calibration_method": "bad_safety_miss_le_1_then_min_good_review_hit",
+        "role": "SAFETY_REVIEW_EVIDENCE"
+      },
+      "display_fallback": {
+        "schema_version": 6.9,
+        "trigger_score": 1.5378220081329346,
+        "calibration_visible_good_fp": 1,
+        "calibration_visible_bad_hit": 35,
+        "calibration_action_good_fp": 1,
+        "calibration_action_bad_hit": 34,
+        "calibration_good_n": 49,
+        "calibration_bad_n": 64,
+        "max_good_fp": 1,
+        "role": "VISIBLE_DIAGNOSTIC_FALLBACK_UNION_WITH_ACTION",
+        "selection_data": "CALIBRATION_ONLY",
+        "final_test_used_for_selection": false
+      },
+      "action_calibration": {
+        "labeled_bad_images": 0,
+        "good_red_image_fp": 1,
+        "good_n": 49,
+        "good_red_image_fp_rate": 0.02040816326530612,
+        "bad_candidate_image_hit": 34,
+        "bad_n": 64,
+        "bad_candidate_image_recall": 0.53125,
+        "lesion_hit": 0,
+        "lesion_total": 0,
+        "lesion_hit_recall": null,
+        "pixel_precision": null,
+        "pixel_recall": null,
+        "pixel_f1": null,
+        "pixel_iou": null,
+        "localization_100_percent_pass": false,
+        "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+        "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+      },
+      "visible_calibration": {
+        "schema_version": 6.9,
+        "good_visible_fp": 1,
+        "good_n": 49,
+        "good_visible_fp_rate": 0.02040816326530612,
+        "bad_visible_hit": 35,
+        "bad_n": 64,
+        "bad_visible_recall": 0.546875,
+        "truth_note": "Visible red evidence is calibration-selected and label-independent at inference; lesion correctness still requires GT masks."
+      },
+      "safety_calibration": {
+        "labeled_bad_images": 0,
+        "good_red_image_fp": 27,
+        "good_n": 49,
+        "good_red_image_fp_rate": 0.5510204081632653,
+        "bad_candidate_image_hit": 63,
+        "bad_n": 64,
+        "bad_candidate_image_recall": 0.984375,
+        "lesion_hit": 0,
+        "lesion_total": 0,
+        "lesion_hit_recall": null,
+        "pixel_precision": null,
+        "pixel_recall": null,
+        "pixel_f1": null,
+        "pixel_iou": null,
+        "localization_100_percent_pass": false,
+        "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+        "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+      },
+      "grid_diagnostics": {
+        "action": {
+          "good_red_image_fp": 1,
+          "good_n": 49,
+          "good_fp_rate": 0.02040816326530612,
+          "bad_candidate_image_hit": 34,
+          "bad_n": 64,
+          "bad_candidate_image_recall": 0.53125
+        },
+        "safety": {
+          "good_red_image_fp": 27,
+          "good_n": 49,
+          "good_fp_rate": 0.5510204081632653,
+          "bad_candidate_image_hit": 63,
+          "bad_n": 64,
+          "bad_candidate_image_recall": 0.984375
+        },
+        "display_fallback": {
+          "schema_version": 6.9,
+          "trigger_score": 1.5378220081329346,
+          "calibration_visible_good_fp": 1,
+          "calibration_visible_bad_hit": 35,
+          "calibration_action_good_fp": 1,
+          "calibration_action_bad_hit": 34,
+          "calibration_good_n": 49,
+          "calibration_bad_n": 64,
+          "max_good_fp": 1,
+          "role": "VISIBLE_DIAGNOSTIC_FALLBACK_UNION_WITH_ACTION",
+          "selection_data": "CALIBRATION_ONLY",
+          "final_test_used_for_selection": false
+        },
+        "action_grid_candidates": 2700,
+        "safety_grid_candidates": 3096
+      }
+    },
+    "visible_candidate_final_test": {
+      "schema_version": 6.9,
+      "good_visible_fp": 6,
+      "good_n": 48,
+      "good_visible_fp_rate": 0.125,
+      "bad_visible_hit": 35,
+      "bad_n": 64,
+      "bad_visible_recall": 0.546875,
+      "truth_note": "Visible red evidence is calibration-selected and label-independent at inference; lesion correctness still requires GT masks."
+    },
+    "safety_candidate_final_test": {
+      "labeled_bad_images": 0,
+      "good_red_image_fp": 31,
+      "good_n": 48,
+      "good_red_image_fp_rate": 0.6458333333333334,
+      "bad_candidate_image_hit": 60,
+      "bad_n": 64,
+      "bad_candidate_image_recall": 0.9375,
+      "lesion_hit": 0,
+      "lesion_total": 0,
+      "lesion_hit_recall": null,
+      "localization_100_percent_pass": false,
+      "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+      "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+    }
+  },
+  "production_ready": false
+}

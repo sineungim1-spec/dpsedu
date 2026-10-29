@@ -1,0 +1,30 @@
+{
+  "schema_version": 6.9,
+  "implemented": [
+    "CAM/View-aware naming and ROI architecture when metadata is present",
+    "remove unnecessary illuminated background while preserving crop buffer",
+    "EfficientAD normal-pattern training and ImageNet/Imagenette auxiliary path via Anomalib",
+    "optional human defect masks for true pixel/lesion localization validation",
+    "boundary inspection halo for burr/edge defects",
+    "separate image decision score and pixel/localization thresholds",
+    "fixed-scale Original/Heatmap/Overlay/Contour semantics",
+    "capture-group leakage-free TRAIN/CALIBRATION/FINAL TEST protocol",
+    "V6.4 inference checkpoint callback conflict fix and ImageVisualizer OFF",
+    "V6.7 calibration-selected score recipe",
+    "V6.7 ACTION/SAFETY localization fusion"
+  ],
+  "observed_cameras": [
+    "GENERIC"
+  ],
+  "observed_views": [
+    "UNKNOWN"
+  ],
+  "not_claimed": [
+    "No camera labels were recoverable from the supplied filenames/metadata; CAM identities are not fabricated.",
+    "No view labels were recoverable from the supplied filenames/metadata; missing views are not fabricated.",
+    "Physical lux/mm/angle operating limits are not inferred from images; they require on-line sweep commissioning.",
+    "Pixel-level defect correctness is not claimed without human GT defect masks.",
+    "OpenVINO/ONNX export is a deployment extension; the Colab teaching bundle remains checkpoint-compatible."
+  ],
+  "company_reference_metrics_note": "Company reference metrics are never copied; only measured V6.7 STEP8 results are reported."
+}

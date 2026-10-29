@@ -1,0 +1,9 @@
+{
+  "version": 6.9,
+  "profile_file": "localization_profile_v6.json",
+  "original_role": "INPUT validation: verify focus/lighting/framing before trusting AI",
+  "heatmap": "MODEL VIEW: fixed cross-image support evidence; auto-OK is color-capped to avoid false alarm red; never per-image min-max",
+  "overlay": "FINAL UI: OK=no red; REVIEW/NG=red model-evidence region; no label-dependent painting",
+  "contour": "FINAL UI: red contour marks model evidence for a non-OK decision; actual GOOD/BAD label never affects inference",
+  "ground_truth_status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS"
+}

@@ -1,0 +1,135 @@
+{
+  "bundle_schema_version": "SESSION02-C4-E07S-1.0",
+  "runtime_version": "V6.9-PF1 ScoreFirst",
+  "bundle_role": "SESSION_02_PRACTICE_CANDIDATE4_E07S_HUMAN_IN_THE_LOOP",
+  "model": "EfficientAD-S",
+  "model_sha256": "736266a37af3c16c0b3445a0505977851592b6fe5103ca4e744d146179ae6bc0",
+  "image_size": 256,
+  "epochs": 7,
+  "counts": {
+    "train_good": 292,
+    "train_bad": 0,
+    "calibration_good": 49,
+    "calibration_bad": 64,
+    "final_test_good": 48,
+    "final_test_bad": 64
+  },
+  "review_low": 0.21444829232516993,
+  "ng_high": 0.5438568345905579,
+  "line_assist_ready": false,
+  "autonomous_reject_ready": false,
+  "recommended_mode": "HUMAN_IN_THE_LOOP",
+  "final_test": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.21444829232516993,
+    "accuracy": 0.75,
+    "precision": 0.6956521739130435,
+    "recall": 1.0,
+    "specificity": 0.4166666666666667,
+    "f1": 0.8205128205128205,
+    "tn": 20,
+    "fp": 28,
+    "fn": 0,
+    "tp": 64,
+    "n": 112,
+    "triage_counts": {
+      "OK": 20,
+      "REVIEW": 38,
+      "NG": 54,
+      "n": 112
+    }
+  },
+  "score_recipe": "V69_PF1_DECISION_HEAD",
+  "line_policy_final_test": {
+    "schema_version": 6.9,
+    "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+    "counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "raw_score_triage_counts": {
+      "good": {
+        "OK": 20,
+        "REVIEW": 24,
+        "NG": 4
+      },
+      "bad": {
+        "OK": 0,
+        "REVIEW": 14,
+        "NG": 50
+      }
+    },
+    "fusion_reasons": {
+      "SCORE_AUTO_OK": 20,
+      "SCORE_REVIEW_BAND": 38,
+      "SCORE_AUTO_NG": 54
+    },
+    "visible_candidate_hits": {
+      "good": 6,
+      "bad": 35
+    },
+    "safety_candidate_hits": {
+      "good": 31,
+      "bad": 60
+    },
+    "good_n": 48,
+    "bad_n": 64,
+    "n": 112,
+    "bad_auto_pass_escape": 0,
+    "bad_auto_pass_escape_rate": 0.0,
+    "good_auto_reject": 4,
+    "good_auto_reject_rate": 0.08333333333333333,
+    "good_auto_ok": 20,
+    "good_auto_ok_rate": 0.4166666666666667,
+    "bad_auto_ng": 50,
+    "bad_auto_ng_rate": 0.78125,
+    "review_n": 38,
+    "review_rate": 0.3392857142857143,
+    "target_good_ng_le_1": false,
+    "target_bad_ok_le_1": true,
+    "target_review_le_40pct": true,
+    "monotonicity": {
+      "score_NG_downgraded": 0,
+      "localization_promoted_nonNG_to_NG": 0,
+      "safety_OK_to_REVIEW_promotions": 0,
+      "passed": true
+    }
+  },
+  "truthfulness": "Package architecture is company-line oriented. Actual use by a named company is an external fact and is not asserted by this file.",
+  "candidate4_status": "STOP_FINAL_FAILED",
+  "candidate_id": "E07",
+  "checkpoint_epoch": 7,
+  "training_seed": 73,
+  "train_good_original": 292,
+  "train_good_mild_geom": 292,
+  "train_good_mild_sensor": 292,
+  "train_good_total": 876,
+  "training_max_epoch": 15,
+  "selected_epoch": 7,
+  "training_coverage": "original + mild photometric/geometric + mild sensor/illumination; TRAIN GOOD only",
+  "policy_contract": "Score=primary; Localization=explanation; Safety=limited OK->REVIEW fail-safe; NG never downgraded",
+  "teacher": "Official pretrained EfficientAD teacher; company student/autoencoder retrained",
+  "historical_final_only": true,
+  "new_unseen_acceptance_claimed": false,
+  "project_name": "Automotive AI Vision Session 02 - Candidate4 E07-S Company-style MASTER",
+  "checkpoint_file": "model/model.ckpt",
+  "artifacts_dir": "artifacts",
+  "runtime_dir": "runtime",
+  "session02_practice": true,
+  "practice_commands": [
+    ".\\run_bad.ps1",
+    ".\\run_good.ps1"
+  ],
+  "decision_rule": "score < review_low => OK; review_low <= score < ng_high => REVIEW; score >= ng_high => NG",
+  "source_model_sha256": "736266a37af3c16c0b3445a0505977851592b6fe5103ca4e744d146179ae6bc0",
+  "sample_note": "Included GOOD/BAD practice images are representative Candidate4 historical benchmark examples selected for Session 02 execution flow."
+}

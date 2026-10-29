@@ -1,0 +1,153 @@
+{
+  "schema_version": 6.9,
+  "kind": "operating_window",
+  "image_size": 256,
+  "groups": {
+    "GENERIC": {
+      "count": 292,
+      "metrics": {
+        "foreground_ratio": {
+          "median": 0.30364227294921875,
+          "q01": 0.2863665771484375,
+          "q99": 0.32125839233398434,
+          "mad": 0.00635528564453125,
+          "scale": 0.03489181518554685,
+          "lower": 0.27938821411132814,
+          "upper": 0.3282367553710937,
+          "n": 292,
+          "rule": "both"
+        },
+        "centroid_offset_px": {
+          "median": 1.5128699264502925,
+          "q01": 0.5921945520268906,
+          "q99": 3.0822922037352534,
+          "mad": 0.3944457564393945,
+          "scale": 2.490097651708363,
+          "lower": null,
+          "upper": 3.580311734076926,
+          "n": 292,
+          "rule": "upper"
+        },
+        "product_mean_gray": {
+          "median": 0.25978220999240875,
+          "q01": 0.19744012355804444,
+          "q99": 0.2924059754610061,
+          "mad": 0.015794217586517334,
+          "scale": 0.09496585190296167,
+          "lower": 0.1784469531774521,
+          "upper": 0.31139914584159845,
+          "n": 292,
+          "rule": "both"
+        },
+        "product_std_gray": {
+          "median": 0.15181615948677063,
+          "q01": 0.12232709340751172,
+          "q99": 0.1646407690644264,
+          "mad": 0.006922200322151184,
+          "scale": 0.042313675656914684,
+          "lower": 0.11386435827612879,
+          "upper": 0.17310350419580933,
+          "n": 292,
+          "rule": "both"
+        },
+        "background_mean_gray": {
+          "median": 0.9995787739753723,
+          "q01": 0.9991586643457413,
+          "q99": 0.9997865009307861,
+          "mad": 7.81714916229248e-05,
+          "scale": 0.0006278365850448386,
+          "lower": 0.9990330970287323,
+          "upper": 0.9999120682477951,
+          "n": 292,
+          "rule": "both"
+        },
+        "product_background_contrast": {
+          "median": 0.7398034334182739,
+          "q01": 0.707191144824028,
+          "q99": 0.802111513018608,
+          "mad": 0.01574501395225525,
+          "scale": 0.09492036819457994,
+          "lower": 0.688207071185112,
+          "upper": null,
+          "n": 292,
+          "rule": "lower"
+        },
+        "glare_ratio": {
+          "median": 0.002926632631027621,
+          "q01": 0.00010188000493119511,
+          "q99": 0.008817095951557042,
+          "mad": 0.0026744754562175134,
+          "scale": 0.008715215946625847,
+          "lower": null,
+          "upper": 0.010560139140882212,
+          "n": 292,
+          "rule": "upper"
+        },
+        "dark_ratio": {
+          "median": 0.0,
+          "q01": 0.0,
+          "q99": 0.012990457315645581,
+          "mad": 0.0,
+          "scale": 0.012990457315645581,
+          "lower": 0.0,
+          "upper": 0.015588548778774698,
+          "n": 292,
+          "rule": "both"
+        },
+        "edge_touch_ratio": {
+          "median": 0.0011966690831496216,
+          "q01": 0.0,
+          "q99": 0.005633110696532171,
+          "mad": 0.0011966690831496216,
+          "scale": 0.005633110696532171,
+          "lower": null,
+          "upper": 0.006759732835838605,
+          "n": 292,
+          "rule": "upper"
+        },
+        "sharpness": {
+          "median": 0.21250972896814346,
+          "q01": 0.13314624398946762,
+          "q99": 0.36582902014255503,
+          "mad": 0.04213760048151016,
+          "scale": 0.2326827761530874,
+          "lower": 0.08660968875885014,
+          "upper": null,
+          "n": 292,
+          "rule": "lower"
+        },
+        "alignment_score": {
+          "median": 0.9537165728357627,
+          "q01": 0.57689585566566,
+          "q99": 1.0916489323420824,
+          "mad": 0.09921389648924328,
+          "scale": 0.5147530766764223,
+          "lower": 0.47394524033037555,
+          "upper": null,
+          "n": 292,
+          "rule": "lower"
+        }
+      }
+    }
+  },
+  "site_validation_protocol": {
+    "C1_score_margin": "For a known GOOD baseline sweep, target Score < image threshold * 0.6.",
+    "C2_sensitivity": "Within the intended operating window, target |delta Score| <= 0.05.",
+    "C3_repeatability": "At an identical setting repeated 3 times, target score sigma <= 0.02.",
+    "variables": [
+      "lighting",
+      "shadow",
+      "reflection",
+      "camera_distance",
+      "product_position",
+      "background",
+      "ROI"
+    ],
+    "note": "Physical lux/mm/angle limits require actual-line commissioning; this automatic gate uses image proxies only."
+  },
+  "runtime_policy": {
+    "status_OK": "inside TRAIN-GOOD learned image envelope",
+    "status_WARN": "one mild image-side deviation; production review recommended",
+    "status_REVIEW_INPUT": "multiple or severe deviations; treat acquisition/input before defect decision"
+  }
+}

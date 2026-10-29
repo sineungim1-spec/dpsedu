@@ -1,0 +1,17 @@
+{
+  "schema_version": 6.7,
+  "policy": "three_zone_company_line_triage",
+  "review_low": 0.21444829232516993,
+  "ng_high": 0.5438568345905579,
+  "binary_threshold": 0.21444829232516993,
+  "zones": {
+    "OK": "score < review_low",
+    "REVIEW": "review_low <= score < ng_high",
+    "NG": "score >= ng_high"
+  },
+  "deployment_rule": {
+    "HUMAN_IN_THE_LOOP": "OK/REVIEW/NG are AI candidates; operator confirms REVIEW and NG.",
+    "AUTONOMOUS_REJECT": "Allowed only when autonomous_reject_ready=true in deployment_validation.json."
+  },
+  "final_test_not_used_for_threshold": true
+}

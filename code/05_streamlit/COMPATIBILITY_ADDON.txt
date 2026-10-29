@@ -1,0 +1,10 @@
+범용 bundle 호환 추가사항
+
+기존 기능/화면은 유지하고 다음만 추가했습니다.
+- legacy 단일 Threshold OK/NG 그대로 지원
+- review_low/ng_high 3구간 OK/REVIEW/NG 지원
+- Candidate4/PF1 decision_model + ROI/localization artifacts가 있으면 PF1 Score/4-view 자동 사용
+- 그렇지 않으면 기존 raw Anomalib pred_score/시각화 사용
+- input_guard_profile.json 또는 PF1 Input Guard가 있으면 상태 표시
+- final_metrics.json / calibration_metrics.json / Candidate4 nested metrics 자동 인식
+- 품질 대시보드에 REVIEW 집계 추가

@@ -1,0 +1,66 @@
+{
+  "schema_version": 6.9,
+  "counts": {
+    "train_good": 292,
+    "train_bad": 0,
+    "calibration_good": 49,
+    "calibration_bad": 64,
+    "final_test_good": 48,
+    "final_test_bad": 64
+  },
+  "coverage": {
+    "train": {
+      "images": 292,
+      "good": 292,
+      "bad": 0,
+      "cameras": [
+        "GENERIC"
+      ],
+      "views": [
+        "UNKNOWN"
+      ],
+      "inspection_groups": [
+        "GENERIC"
+      ]
+    },
+    "calibration": {
+      "images": 113,
+      "good": 49,
+      "bad": 64,
+      "cameras": [
+        "GENERIC"
+      ],
+      "views": [
+        "UNKNOWN"
+      ],
+      "inspection_groups": [
+        "GENERIC"
+      ]
+    },
+    "final_test": {
+      "images": 112,
+      "good": 48,
+      "bad": 64,
+      "cameras": [
+        "GENERIC"
+      ],
+      "views": [
+        "UNKNOWN"
+      ],
+      "inspection_groups": [
+        "GENERIC"
+      ]
+    }
+  },
+  "leakage_check": {
+    "capture_group_leakage_count": 0,
+    "capture_group_leakage_groups": [],
+    "mixed_view_label_group_count": 0,
+    "mixed_view_label_groups": [],
+    "mixed_view_label_groups_isolated_from_train": true,
+    "forced_split_conflict_count": 0,
+    "forced_split_conflict_groups": []
+  },
+  "ground_truth_masks_calibration": 0,
+  "ground_truth_masks_final_test": 0
+}

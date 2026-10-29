@@ -1,0 +1,965 @@
+{
+  "schema_version": 6.9,
+  "runtime_version": "V6.9-PF1 ScoreFirst",
+  "production_ready": false,
+  "image_gate": {
+    "final_test_fn_zero": true,
+    "final_test_bad_recall_ge_0_98": true,
+    "final_test_good_specificity_ge_0_90": false,
+    "final_test_auroc_ge_0_95": false
+  },
+  "line_policy_gate": {
+    "final_bad_auto_pass_le_1": true,
+    "final_good_auto_reject_le_1": false,
+    "final_review_rate_le_0_40": true
+  },
+  "data_gate": {
+    "capture_group_leakage_zero": true,
+    "mixed_view_label_groups_isolated_from_train": true,
+    "final_test_good_ge_20": true,
+    "final_test_bad_ge_20": true
+  },
+  "localization_gate": {
+    "final_test_gt_masks_ge_20": false,
+    "good_visible_red_fp_le_1": false,
+    "lesion_hit_recall_ge_0_98": false,
+    "pixel_recall_ge_0_90": false,
+    "pixel_f1_ge_0_50": false
+  },
+  "decision_model": {
+    "schema_version": 6.9,
+    "kind": "calibration_supervised_decision_head",
+    "model": "standardized_logistic_regression",
+    "feature_names": [
+      "anom_top_015",
+      "anom_top_030",
+      "anom_top_060",
+      "joint_top_030",
+      "joint_top_060",
+      "joint_top_100",
+      "surface_joint",
+      "za_q999_surface",
+      "za_max_surface",
+      "zr_q999_surface",
+      "joint_q999_surface",
+      "joint_area_25",
+      "joint_area_35",
+      "strong_area_60",
+      "strong_area_80",
+      "largest_joint_component",
+      "boundary_joint_top",
+      "surface_resid_top"
+    ],
+    "C": 0.3,
+    "class_weight": null,
+    "mean": [
+      10.494724388671132,
+      9.576823445547998,
+      8.468852540033053,
+      3.236175077678883,
+      2.8455777872452694,
+      2.5549545776000064,
+      2.9063183725935167,
+      10.135069276379273,
+      12.323793563167605,
+      10.531699644780792,
+      3.371097567862114,
+      0.00447630548744914,
+      0.0011634524505059506,
+      0.017815628539833525,
+      0.011071305838672132,
+      0.0019197386059686037,
+      1.6257036345458664,
+      9.134580004531726
+    ],
+    "scale": [
+      9.94374478891533,
+      8.685061546564366,
+      7.234598647002013,
+      1.5737157837071318,
+      1.2832392609377874,
+      1.105067892521855,
+      1.3519470627516241,
+      9.432244847924979,
+      12.497596682576413,
+      8.28371473595884,
+      1.8561907926481838,
+      0.006080672803502323,
+      0.0019114887132420132,
+      0.027312480896995398,
+      0.019412516589097387,
+      0.002616202768058181,
+      0.8726980739486879,
+      6.634884418000043
+    ],
+    "coef": [
+      0.2818029640478961,
+      0.3176534442578013,
+      0.3472267044628062,
+      0.16431876964011963,
+      0.31730086016173437,
+      0.44397501810771073,
+      0.3666211320775114,
+      0.2953666138486775,
+      0.20349625204262997,
+      0.27197321337077746,
+      0.23604573898402814,
+      -0.5719869622604031,
+      -0.2998208313936908,
+      0.07092078101833191,
+      0.01863523013232516,
+      -0.3288037190926143,
+      -0.4178859570141552,
+      0.5224191324111793
+    ],
+    "intercept": 0.6998958924800065,
+    "selection_data": "CALIBRATION_ONLY",
+    "final_test_used_for_selection": false,
+    "oof_selection": {
+      "C": 0.3,
+      "class_weight": null,
+      "oof_auc": 0.8982780612244898,
+      "oof_band": {
+        "review_low": 0.21077993931572617,
+        "ng_high": 0.6825241090579157,
+        "counts": {
+          "good": {
+            "OK": 22,
+            "REVIEW": 26,
+            "NG": 1
+          },
+          "bad": {
+            "OK": 1,
+            "REVIEW": 19,
+            "NG": 44
+          }
+        },
+        "bad_ok": 1,
+        "good_ng": 1,
+        "review_n": 45,
+        "review_rate": 0.39823008849557523,
+        "good_ok": 22,
+        "bad_ng": 44,
+        "feasible": true,
+        "constraints": {
+          "max_bad_ok": 1,
+          "max_good_ng": 1
+        }
+      },
+      "utility": 1000.8636357684667,
+      "feasible": true
+    },
+    "candidate_diagnostics": [
+      {
+        "C": 0.01,
+        "class_weight": null,
+        "oof_auc": 0.857780612244898,
+        "oof_band": {
+          "review_low": 0.31613863641853435,
+          "ng_high": 0.6178792588833003,
+          "counts": {
+            "good": {
+              "OK": 14,
+              "REVIEW": 34,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 32,
+              "NG": 31
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 66,
+          "review_rate": 0.584070796460177,
+          "good_ok": 14,
+          "bad_ng": 31,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 999.8292780386491,
+        "feasible": true
+      },
+      {
+        "C": 0.03,
+        "class_weight": null,
+        "oof_auc": 0.8772321428571428,
+        "oof_band": {
+          "review_low": 0.26615056213145355,
+          "ng_high": 0.6833100613400831,
+          "counts": {
+            "good": {
+              "OK": 14,
+              "REVIEW": 34,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 28,
+              "NG": 35
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 62,
+          "review_rate": 0.5486725663716814,
+          "good_ok": 14,
+          "bad_ng": 35,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.0497740202276,
+        "feasible": true
+      },
+      {
+        "C": 0.1,
+        "class_weight": null,
+        "oof_auc": 0.8960459183673469,
+        "oof_band": {
+          "review_low": 0.23958214012509865,
+          "ng_high": 0.6647574992308691,
+          "counts": {
+            "good": {
+              "OK": 20,
+              "REVIEW": 28,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 22,
+              "NG": 41
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 50,
+          "review_rate": 0.4424778761061947,
+          "good_ok": 20,
+          "bad_ng": 41,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.63218033231,
+        "feasible": true
+      },
+      {
+        "C": 0.3,
+        "class_weight": null,
+        "oof_auc": 0.8982780612244898,
+        "oof_band": {
+          "review_low": 0.21077993931572617,
+          "ng_high": 0.6825241090579157,
+          "counts": {
+            "good": {
+              "OK": 22,
+              "REVIEW": 26,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 19,
+              "NG": 44
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 45,
+          "review_rate": 0.39823008849557523,
+          "good_ok": 22,
+          "bad_ng": 44,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.8636357684667,
+        "feasible": true
+      },
+      {
+        "C": 1.0,
+        "class_weight": null,
+        "oof_auc": 0.8960459183673469,
+        "oof_band": {
+          "review_low": 0.17728620361358355,
+          "ng_high": 0.7705301837381099,
+          "counts": {
+            "good": {
+              "OK": 22,
+              "REVIEW": 26,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 19,
+              "NG": 44
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 45,
+          "review_rate": 0.39823008849557523,
+          "good_ok": 22,
+          "bad_ng": 44,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.8591714827523,
+        "feasible": true
+      },
+      {
+        "C": 3.0,
+        "class_weight": null,
+        "oof_auc": 0.8880739795918366,
+        "oof_band": {
+          "review_low": 0.14012469807334899,
+          "ng_high": 0.9628303949340105,
+          "counts": {
+            "good": {
+              "OK": 22,
+              "REVIEW": 26,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 36,
+              "NG": 27
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 62,
+          "review_rate": 0.5486725663716814,
+          "good_ok": 22,
+          "bad_ng": 27,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.0714576936969,
+        "feasible": true
+      },
+      {
+        "C": 0.01,
+        "class_weight": "balanced",
+        "oof_auc": 0.8574617346938777,
+        "oof_band": {
+          "review_low": 0.2991086718884316,
+          "ng_high": 0.6134769996977996,
+          "counts": {
+            "good": {
+              "OK": 13,
+              "REVIEW": 35,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 32,
+              "NG": 31
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 67,
+          "review_rate": 0.5929203539823009,
+          "good_ok": 13,
+          "bad_ng": 31,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 999.7832420534586,
+        "feasible": true
+      },
+      {
+        "C": 0.03,
+        "class_weight": "balanced",
+        "oof_auc": 0.875,
+        "oof_band": {
+          "review_low": 0.2391735827233058,
+          "ng_high": 0.6781628774175846,
+          "counts": {
+            "good": {
+              "OK": 14,
+              "REVIEW": 34,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 29,
+              "NG": 34
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 63,
+          "review_rate": 0.5575221238938053,
+          "good_ok": 14,
+          "bad_ng": 34,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 999.9999115044247,
+        "feasible": true
+      },
+      {
+        "C": 0.1,
+        "class_weight": "balanced",
+        "oof_auc": 0.895408163265306,
+        "oof_band": {
+          "review_low": 0.20119216250896593,
+          "ng_high": 0.67281537175055,
+          "counts": {
+            "good": {
+              "OK": 19,
+              "REVIEW": 29,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 23,
+              "NG": 40
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 52,
+          "review_rate": 0.46017699115044247,
+          "good_ok": 19,
+          "bad_ng": 40,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.5401083619289,
+        "feasible": true
+      },
+      {
+        "C": 0.3,
+        "class_weight": "balanced",
+        "oof_auc": 0.8989158163265306,
+        "oof_band": {
+          "review_low": 0.16949751397001547,
+          "ng_high": 0.6422929025681823,
+          "counts": {
+            "good": {
+              "OK": 20,
+              "REVIEW": 28,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 19,
+              "NG": 44
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 47,
+          "review_rate": 0.415929203539823,
+          "good_ok": 20,
+          "bad_ng": 44,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.7741148184937,
+        "feasible": true
+      },
+      {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "oof_auc": 0.8960459183673468,
+        "oof_band": {
+          "review_low": 0.14320387595380357,
+          "ng_high": 0.7770621360049635,
+          "counts": {
+            "good": {
+              "OK": 22,
+              "REVIEW": 26,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 20,
+              "NG": 43
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 46,
+          "review_rate": 0.40707964601769914,
+          "good_ok": 22,
+          "bad_ng": 43,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.8137732526639,
+        "feasible": true
+      },
+      {
+        "C": 3.0,
+        "class_weight": "balanced",
+        "oof_auc": 0.887436224489796,
+        "oof_band": {
+          "review_low": 0.11673262637356781,
+          "ng_high": 0.9594887900422384,
+          "counts": {
+            "good": {
+              "OK": 22,
+              "REVIEW": 26,
+              "NG": 1
+            },
+            "bad": {
+              "OK": 1,
+              "REVIEW": 36,
+              "NG": 27
+            }
+          },
+          "bad_ok": 1,
+          "good_ng": 1,
+          "review_n": 62,
+          "review_rate": 0.5486725663716814,
+          "good_ok": 22,
+          "bad_ng": 27,
+          "feasible": true,
+          "constraints": {
+            "max_bad_ok": 1,
+            "max_good_ng": 1
+          }
+        },
+        "utility": 1000.0701821834929,
+        "feasible": true
+      }
+    ],
+    "calibration_operating_band": {
+      "review_low": 0.21444829232516993,
+      "ng_high": 0.5438568345905579,
+      "counts": {
+        "good": {
+          "OK": 25,
+          "REVIEW": 23,
+          "NG": 1
+        },
+        "bad": {
+          "OK": 1,
+          "REVIEW": 16,
+          "NG": 47
+        }
+      },
+      "bad_ok": 1,
+      "good_ng": 1,
+      "review_n": 39,
+      "review_rate": 0.34513274336283184,
+      "good_ok": 25,
+      "bad_ng": 47,
+      "feasible": true,
+      "constraints": {
+        "max_bad_ok": 1,
+        "max_good_ng": 1
+      }
+    },
+    "target": "minimize REVIEW subject to BAD->OK <=1 and GOOD->NG <=1 on Calibration"
+  },
+  "fusion_policy": {
+    "schema_version": 6.9,
+    "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+    "ok_cut": 0.21444829232516993,
+    "ng_cut": 0.5438568345905579,
+    "safety_review_floor": 0.21444829232516993,
+    "safety_fail_safe_enabled": false,
+    "safety_requires_visible_agreement": true,
+    "selection_data": "CALIBRATION_ONLY",
+    "final_test_used_for_selection": false,
+    "constraints": {
+      "max_bad_ok": 1,
+      "max_good_ng": 1
+    },
+    "calibration_counts": {
+      "good": {
+        "OK": 25,
+        "REVIEW": 23,
+        "NG": 1
+      },
+      "bad": {
+        "OK": 1,
+        "REVIEW": 16,
+        "NG": 47
+      }
+    },
+    "calibration_reasons": {
+      "SCORE_AUTO_OK": 26,
+      "SCORE_REVIEW_BAND": 39,
+      "SCORE_AUTO_NG": 48
+    },
+    "calibration_bad_ok": 1,
+    "calibration_good_ng": 1,
+    "calibration_review_n": 39,
+    "calibration_review_rate": 0.34513274336283184,
+    "feasible": true,
+    "score_is_primary_decision": true,
+    "localization_role": "EXPLANATION_AND_DISPLAY",
+    "safety_role": "LIMITED_OK_TO_REVIEW_FAIL_SAFE_ONLY",
+    "ng_downgrade_allowed": false,
+    "review_to_ng_by_localization_allowed": false,
+    "auto_ok_rule": "score < ok_cut, except optional dual-evidence safety hold inside the calibrated borderline-OK band",
+    "auto_ng_rule": "score >= ng_cut; localization is not required and cannot downgrade NG",
+    "review_rule": "ok_cut <= score < ng_cut, plus optional calibrated borderline-OK safety hold"
+  },
+  "final_test_metrics": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.21444829232516993,
+    "accuracy": 0.75,
+    "precision": 0.6956521739130435,
+    "recall": 1.0,
+    "specificity": 0.4166666666666667,
+    "f1": 0.8205128205128205,
+    "tn": 20,
+    "fp": 28,
+    "fn": 0,
+    "tp": 64,
+    "n": 112,
+    "triage_counts": {
+      "OK": 20,
+      "REVIEW": 38,
+      "NG": 54,
+      "n": 112
+    }
+  },
+  "final_test_high_confidence_ng": {
+    "image_AUROC": 0.91015625,
+    "image_AUPR": 0.9414138914600917,
+    "threshold": 0.5438568345905579,
+    "accuracy": 0.8392857142857143,
+    "precision": 0.9259259259259259,
+    "recall": 0.78125,
+    "specificity": 0.9166666666666666,
+    "f1": 0.847457627118644,
+    "tn": 44,
+    "fp": 4,
+    "fn": 14,
+    "tp": 50,
+    "n": 112
+  },
+  "line_policy_validation": {
+    "schema_version": 6.9,
+    "calibration": {
+      "schema_version": 6.9,
+      "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+      "counts": {
+        "good": {
+          "OK": 25,
+          "REVIEW": 23,
+          "NG": 1
+        },
+        "bad": {
+          "OK": 1,
+          "REVIEW": 16,
+          "NG": 47
+        }
+      },
+      "raw_score_triage_counts": {
+        "good": {
+          "OK": 25,
+          "REVIEW": 23,
+          "NG": 1
+        },
+        "bad": {
+          "OK": 1,
+          "REVIEW": 16,
+          "NG": 47
+        }
+      },
+      "fusion_reasons": {
+        "SCORE_AUTO_OK": 26,
+        "SCORE_REVIEW_BAND": 39,
+        "SCORE_AUTO_NG": 48
+      },
+      "visible_candidate_hits": {
+        "good": 1,
+        "bad": 35
+      },
+      "safety_candidate_hits": {
+        "good": 27,
+        "bad": 63
+      },
+      "good_n": 49,
+      "bad_n": 64,
+      "n": 113,
+      "bad_auto_pass_escape": 1,
+      "bad_auto_pass_escape_rate": 0.015625,
+      "good_auto_reject": 1,
+      "good_auto_reject_rate": 0.02040816326530612,
+      "good_auto_ok": 25,
+      "good_auto_ok_rate": 0.5102040816326531,
+      "bad_auto_ng": 47,
+      "bad_auto_ng_rate": 0.734375,
+      "review_n": 39,
+      "review_rate": 0.34513274336283184,
+      "target_good_ng_le_1": true,
+      "target_bad_ok_le_1": true,
+      "target_review_le_40pct": true,
+      "monotonicity": {
+        "score_NG_downgraded": 0,
+        "localization_promoted_nonNG_to_NG": 0,
+        "safety_OK_to_REVIEW_promotions": 0,
+        "passed": true
+      }
+    },
+    "final_test": {
+      "schema_version": 6.9,
+      "policy": "V6.9-PF1 ScoreFirst Monotonic + Limited Safety FailSafe",
+      "counts": {
+        "good": {
+          "OK": 20,
+          "REVIEW": 24,
+          "NG": 4
+        },
+        "bad": {
+          "OK": 0,
+          "REVIEW": 14,
+          "NG": 50
+        }
+      },
+      "raw_score_triage_counts": {
+        "good": {
+          "OK": 20,
+          "REVIEW": 24,
+          "NG": 4
+        },
+        "bad": {
+          "OK": 0,
+          "REVIEW": 14,
+          "NG": 50
+        }
+      },
+      "fusion_reasons": {
+        "SCORE_AUTO_OK": 20,
+        "SCORE_REVIEW_BAND": 38,
+        "SCORE_AUTO_NG": 54
+      },
+      "visible_candidate_hits": {
+        "good": 6,
+        "bad": 35
+      },
+      "safety_candidate_hits": {
+        "good": 31,
+        "bad": 60
+      },
+      "good_n": 48,
+      "bad_n": 64,
+      "n": 112,
+      "bad_auto_pass_escape": 0,
+      "bad_auto_pass_escape_rate": 0.0,
+      "good_auto_reject": 4,
+      "good_auto_reject_rate": 0.08333333333333333,
+      "good_auto_ok": 20,
+      "good_auto_ok_rate": 0.4166666666666667,
+      "bad_auto_ng": 50,
+      "bad_auto_ng_rate": 0.78125,
+      "review_n": 38,
+      "review_rate": 0.3392857142857143,
+      "target_good_ng_le_1": false,
+      "target_bad_ok_le_1": true,
+      "target_review_le_40pct": true,
+      "monotonicity": {
+        "score_NG_downgraded": 0,
+        "localization_promoted_nonNG_to_NG": 0,
+        "safety_OK_to_REVIEW_promotions": 0,
+        "passed": true
+      }
+    },
+    "final_test_not_used_for_policy_selection": true
+  },
+  "localization_validation": {
+    "labeled_bad_images": 0,
+    "good_red_image_fp": 3,
+    "good_n": 48,
+    "good_red_image_fp_rate": 0.0625,
+    "bad_candidate_image_hit": 34,
+    "bad_n": 64,
+    "bad_candidate_image_recall": 0.53125,
+    "lesion_hit": 0,
+    "lesion_total": 0,
+    "lesion_hit_recall": null,
+    "pixel_precision": null,
+    "pixel_recall": null,
+    "pixel_f1": null,
+    "pixel_iou": null,
+    "localization_100_percent_pass": false,
+    "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+    "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks.",
+    "ground_truth_masks_found_calibration": 0,
+    "ground_truth_masks_found_final_test": 0,
+    "calibration_diagnostics": {
+      "action_thresholds": {
+        "anomaly_z": 6.5,
+        "residual_z": 3.5,
+        "strong_anomaly_z": 16.0,
+        "min_area": 4,
+        "boundary_multiplier": 1.2,
+        "calibration_method": "good_red_image_fp_le_1_then_max_bad_hit",
+        "role": "ACTION_VISIBLE_RED"
+      },
+      "safety_thresholds": {
+        "anomaly_z": 2.0,
+        "residual_z": 1.2,
+        "strong_anomaly_z": 7.0,
+        "min_area": 12,
+        "boundary_multiplier": 1.35,
+        "calibration_method": "bad_safety_miss_le_1_then_min_good_review_hit",
+        "role": "SAFETY_REVIEW_EVIDENCE"
+      },
+      "display_fallback": {
+        "schema_version": 6.9,
+        "trigger_score": 1.5378220081329346,
+        "calibration_visible_good_fp": 1,
+        "calibration_visible_bad_hit": 35,
+        "calibration_action_good_fp": 1,
+        "calibration_action_bad_hit": 34,
+        "calibration_good_n": 49,
+        "calibration_bad_n": 64,
+        "max_good_fp": 1,
+        "role": "VISIBLE_DIAGNOSTIC_FALLBACK_UNION_WITH_ACTION",
+        "selection_data": "CALIBRATION_ONLY",
+        "final_test_used_for_selection": false
+      },
+      "action_calibration": {
+        "labeled_bad_images": 0,
+        "good_red_image_fp": 1,
+        "good_n": 49,
+        "good_red_image_fp_rate": 0.02040816326530612,
+        "bad_candidate_image_hit": 34,
+        "bad_n": 64,
+        "bad_candidate_image_recall": 0.53125,
+        "lesion_hit": 0,
+        "lesion_total": 0,
+        "lesion_hit_recall": null,
+        "pixel_precision": null,
+        "pixel_recall": null,
+        "pixel_f1": null,
+        "pixel_iou": null,
+        "localization_100_percent_pass": false,
+        "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+        "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+      },
+      "visible_calibration": {
+        "schema_version": 6.9,
+        "good_visible_fp": 1,
+        "good_n": 49,
+        "good_visible_fp_rate": 0.02040816326530612,
+        "bad_visible_hit": 35,
+        "bad_n": 64,
+        "bad_visible_recall": 0.546875,
+        "truth_note": "Visible red evidence is calibration-selected and label-independent at inference; lesion correctness still requires GT masks."
+      },
+      "safety_calibration": {
+        "labeled_bad_images": 0,
+        "good_red_image_fp": 27,
+        "good_n": 49,
+        "good_red_image_fp_rate": 0.5510204081632653,
+        "bad_candidate_image_hit": 63,
+        "bad_n": 64,
+        "bad_candidate_image_recall": 0.984375,
+        "lesion_hit": 0,
+        "lesion_total": 0,
+        "lesion_hit_recall": null,
+        "pixel_precision": null,
+        "pixel_recall": null,
+        "pixel_f1": null,
+        "pixel_iou": null,
+        "localization_100_percent_pass": false,
+        "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+        "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+      },
+      "grid_diagnostics": {
+        "action": {
+          "good_red_image_fp": 1,
+          "good_n": 49,
+          "good_fp_rate": 0.02040816326530612,
+          "bad_candidate_image_hit": 34,
+          "bad_n": 64,
+          "bad_candidate_image_recall": 0.53125
+        },
+        "safety": {
+          "good_red_image_fp": 27,
+          "good_n": 49,
+          "good_fp_rate": 0.5510204081632653,
+          "bad_candidate_image_hit": 63,
+          "bad_n": 64,
+          "bad_candidate_image_recall": 0.984375
+        },
+        "display_fallback": {
+          "schema_version": 6.9,
+          "trigger_score": 1.5378220081329346,
+          "calibration_visible_good_fp": 1,
+          "calibration_visible_bad_hit": 35,
+          "calibration_action_good_fp": 1,
+          "calibration_action_bad_hit": 34,
+          "calibration_good_n": 49,
+          "calibration_bad_n": 64,
+          "max_good_fp": 1,
+          "role": "VISIBLE_DIAGNOSTIC_FALLBACK_UNION_WITH_ACTION",
+          "selection_data": "CALIBRATION_ONLY",
+          "final_test_used_for_selection": false
+        },
+        "action_grid_candidates": 2700,
+        "safety_grid_candidates": 3096
+      }
+    },
+    "visible_candidate_final_test": {
+      "schema_version": 6.9,
+      "good_visible_fp": 6,
+      "good_n": 48,
+      "good_visible_fp_rate": 0.125,
+      "bad_visible_hit": 35,
+      "bad_n": 64,
+      "bad_visible_recall": 0.546875,
+      "truth_note": "Visible red evidence is calibration-selected and label-independent at inference; lesion correctness still requires GT masks."
+    },
+    "safety_candidate_final_test": {
+      "labeled_bad_images": 0,
+      "good_red_image_fp": 31,
+      "good_n": 48,
+      "good_red_image_fp_rate": 0.6458333333333334,
+      "bad_candidate_image_hit": 60,
+      "bad_n": 64,
+      "bad_candidate_image_recall": 0.9375,
+      "lesion_hit": 0,
+      "lesion_total": 0,
+      "lesion_hit_recall": null,
+      "localization_100_percent_pass": false,
+      "status": "UNVERIFIED_NO_FINAL_TEST_GROUND_TRUTH_MASKS",
+      "truth_note": "Image-level BAD candidate hit uses BAD labels only; pixel/lesion correctness requires human GT masks."
+    }
+  },
+  "note": "Decision-head hyperparameters and score operating band were selected on Calibration only. PF1 keeps score as the primary monotonic triage; localization is explanatory and safety is a limited OK-to-REVIEW fail-safe. Final Test remained locked."
+}

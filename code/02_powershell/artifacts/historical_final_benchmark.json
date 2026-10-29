@@ -1,0 +1,40 @@
+{
+  "status": "STOP_FINAL_FAILED",
+  "required": {
+    "good_NG_le_1": false,
+    "bad_OK_le_1": true,
+    "review_le_40pct": true,
+    "four_views_consistent": true,
+    "good_OK_without_alarm": true,
+    "recorded_capture_leakage_zero": true,
+    "exact_pixel_duplicate_groups_zero": true
+  },
+  "recommended": {
+    "review_le_35pct": true,
+    "good_OK_ge_30": false,
+    "bad_NG_ge_45": true,
+    "AUROC_ge_0_92": false
+  },
+  "counts": {
+    "good": {
+      "OK": 20,
+      "REVIEW": 24,
+      "NG": 4
+    },
+    "bad": {
+      "OK": 0,
+      "REVIEW": 14,
+      "NG": 50
+    }
+  },
+  "review_n": 38,
+  "review_rate": 0.3392857142857143,
+  "AUROC": 0.91015625,
+  "final_n": 112,
+  "final_inference_rounds": 1,
+  "new_unseen_acceptance_claimed": false,
+  "autonomous_deployment_approved": false,
+  "next_action": "Use a newly locked independent acceptance set for deployment; no extra seeds or threshold/runtime tuning on this Final set.",
+  "winner": "E07",
+  "evaluation_role": "HISTORICAL_FINAL_BENCHMARK"
+}
