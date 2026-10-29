@@ -1,9 +1,0 @@
-# V6.4 ProductionFix - Colab/reproducible runtime
-# Keep Colab's installed GPU torch/torchvision; do not force a CPU wheel here.
-anomalib==2.3.3
-lightning>=2.6,<2.7
-opencv-python-headless>=4.10,<5
-numpy>=1.26,<3
-Pillow>=10,<13
-scikit-learn>=1.5,<2
-pandas>=2.2,<3
