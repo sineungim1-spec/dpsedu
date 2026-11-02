@@ -45,12 +45,14 @@ footer{max-width:1450px;margin:0 auto;padding:0 18px 25px;color:#70808e;font-siz
 .full{grid-column:1/-1}
 @media(max-width:900px){.wrap{grid-template-columns:1fr}.full{grid-column:auto}}
 @media(max-width:520px){.wrap{padding:10px;gap:10px}.cardbody{padding:11px}.metrics{grid-template-columns:repeat(2,1fr)}button{padding:9px 10px;font-size:12px}}
+ .dps-nav{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:16px;padding:10px 12px;background:#ffffff18;border:1px solid #ffffff38;border-radius:10px;font-size:13px}.dps-nav a{color:#fff;text-decoration:none;font-weight:700}.dps-nav span{margin-left:auto;color:#dceaf4}.dps-nav button{background:#ffffff22;color:#fff;border:1px solid #ffffff66;border-radius:7px;padding:7px 10px;cursor:pointer}@media(max-width:560px){.dps-nav{gap:9px}.dps-nav span{margin-left:0}}
 </style>
 </head>
 <body>
 <header>
   <h1>⚙ 동력전달장치 가상 조립 실습실</h1>
   <p>기계요소설계 · 특성화고 3학년 · 부품 이동부터 동축 정렬과 끼워맞춤까지</p>
+<nav class="dps-nav"><a href="index.html">DPS EDU</a><a href="simulator.html">시뮬레이터</a><a href="mypage.html">마이페이지</a><a href="admin.html">관리자 미리보기</a><a href="login.html">로그인·미리보기</a><span id="dpsNavState">인증 미연결</span><button id="dpsNavLogout" type="button">로그아웃</button></nav>
 </header>
 <main class="wrap">
 <section class="card">
