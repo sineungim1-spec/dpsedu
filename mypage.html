@@ -1,0 +1,13 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>마이페이지 | DPS EDU</title><link rel="stylesheet" href="assets/auth.css"></head><body>
+<header class="auth-header"><nav class="site-nav"><a href="index.html">DPS EDU</a><a href="simulator.html">시뮬레이터</a><a href="mypage.html">마이페이지</a><a href="admin.html" data-admin-link hidden>관리자</a><span class="nav-spacer"></span><span data-user-label>체험 모드</span><button data-logout type="button">로그아웃</button></nav><h1>마이페이지</h1><p>동력전달장치 가상 조립 실습 · 3단계 체험 버전</p></header>
+<main class="container"><nav class="page-nav"><a href="index.html">홈</a><a href="simulator.html">실습 시작</a><a href="mypage.html">마이페이지</a></nav>
+ <section class="grid"><article class="panel"><h2>내 프로필</h2><div id="profile"></div><form id="profileForm"><div class="field"><label for="displayName">표시 이름 수정</label><input id="displayName" maxlength="40" required></div><button class="btn primary">프로필 변경(체험)</button></form></article>
+ <article class="panel"><h2>나의 학습 활동</h2><div class="stat"><small>저장된 실습 기록</small><strong id="count">0</strong></div><p class="muted">실습 화면에서 ‘현재 조건 기록하기’를 누르면 이곳에 표시됩니다. 체험 데이터는 현재 브라우저에만 저장됩니다.</p><a class="btn primary" href="simulator.html">시뮬레이터 열기</a></article></section>
+ <section class="panel" style="margin-top:14px"><h2>최근 실습 기록</h2><div class="table-wrap"><table><thead><tr><th>날짜</th><th>끼워맞춤</th><th>베어링 오차</th><th>축 오차</th><th>결과</th></tr></thead><tbody id="records"></tbody></table></div></section>
+</main>
+<script>
+(async()=>{const u=DpsAuth.requireLogin();if(!u)return;const p=await DpsAuth.getUserProfile();document.getElementById('profile').innerHTML='<p><b>'+p.displayName+'</b></p><p>'+p.email+'</p><span class="pill">'+(p.role==='admin'?'관리자 체험':'일반 사용자 체험')+'</span>';
+document.getElementById('displayName').value=p.displayName;document.getElementById('profileForm').onsubmit=async e=>{e.preventDefault();await DpsAuth.updateProfile({displayName:document.getElementById('displayName').value.trim()});location.reload()};
+const rows=await DpsAuth.getActivityRecords();document.getElementById('count').textContent=rows.length;document.getElementById('records').innerHTML=rows.length?rows.map(r=>'<tr><td>'+new Date(r.createdAt).toLocaleString('ko-KR')+'</td><td>'+r.fit+'</td><td>'+r.bearingError+' mm</td><td>'+r.shaftError+' mm</td><td>'+r.result+'</td></tr>').join(''):'<tr><td colspan="5">저장된 기록이 없습니다.</td></tr>';
+})();
+</script><footer>3단계 체험 모드입니다. 실제 인증·권한 검증·서버 저장은 아직 연결되지 않았습니다.</footer><script src="assets/auth.js"></script></body></html>
