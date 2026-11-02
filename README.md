@@ -1,32 +1,49 @@
 # DPS EDU — 동력전달장치 학습 플랫폼
 
 ## 주요 화면
-- `index.html`: 기존 학습 플랫폼 홈
-- `login.html`: 아이디·비밀번호 로그인
-- `signup.html`: 아이디·이름·비밀번호 회원가입
+- `index.html`: 학습 플랫폼 홈
+- `login.html`: Supabase 이메일·비밀번호 로그인
+- `signup.html`: 이메일·이름·비밀번호 회원가입
 - `mypage.html`: 프로필, 비밀번호, 개인 실습 기록
-- `admin.html`: 회원·활동 데이터·콘텐츠·관리자 설정
+- `admin.html`: 회원·활동 데이터·콘텐츠·서비스 설정 관리
 - `simulator.html`: 기존 동력전달장치 가상 조립 시뮬레이터
-- `assets/auth.js`: 인증·계정·데이터 저장 어댑터
-- `assets/simulator-bridge.js`: 시뮬레이터 기록과 로그인 계정 연결
+- `assets/auth.js`: Supabase Auth 및 데이터 접근 어댑터
+- `assets/supabase-config.js`: 공개 Project URL 및 Publishable key
+- `assets/simulator-bridge.js`: 시뮬레이터 실습 이벤트 저장 연결
 
-## 최초 관리자
-- 아이디: `admin`
-- 초기 비밀번호: `1234`
-- 최초 실행 시 브라우저에 관리자 계정이 생성됩니다. 관리자 설정에서 즉시 비밀번호를 변경하세요.
-- 일반 회원가입으로 관리자 역할을 만들 수 없습니다.
+## Supabase 설정
+브라우저에는 Supabase Project URL과 Publishable key만 사용합니다. Secret/service_role key는 절대 클라이언트 파일에 넣지 않습니다. Supabase SQL Editor에서 기존 스키마와 RLS 정책 및 `handle_new_user()` 호환성 수정 SQL을 적용해야 합니다.
 
-## 회원가입 및 저장
-회원가입은 아이디(영문·숫자·._- 3~24자), 이름, 비밀번호(8자 이상)만 입력합니다. 비밀번호는 사용자별 salt와 PBKDF2(SHA-256, 150,000회)로 파생한 값만 브라우저 저장소에 보관합니다. 비밀번호 원문은 저장하지 않습니다. 계정과 기록은 같은 브라우저의 localStorage, 로그인 상태는 sessionStorage에 저장됩니다.
+회원가입 시 Auth 사용자 메타데이터의 `display_name`과 `name`을 전달합니다. DB 트리거가 `profiles` 행을 생성하며 기본 역할은 `user`입니다. 비밀번호는 Supabase Auth가 관리하고 애플리케이션 테이블에 별도 저장하지 않습니다.
 
-## 실행
-정적 호스팅(Netlify 등) 또는 로컬 웹 서버에서 HTTPS/localhost로 실행하세요. Web Crypto API는 보안 컨텍스트가 필요합니다.
+## 관리자 최초 설정
+1. Supabase Authentication > Users에서 관리자로 사용할 이메일 계정을 먼저 회원가입합니다.
+2. 해당 계정의 UUID를 확인합니다.
+3. SQL Editor에서 아래와 같이 해당 계정만 관리자로 승격합니다.
 
-## 보안상 중요
-현재 구현은 단일 브라우저 교육·시연용입니다. HTML/JavaScript와 브라우저 저장소는 사용자가 수정할 수 있으므로 공개 서비스의 인증·관리자 권한 보호 수단으로 사용하면 안 됩니다. 다른 기기와 데이터가 공유되지 않습니다. 운영 전에는 Supabase Auth 등 서버 인증과 데이터베이스 RLS로 교체하고, 관리자 역할과 회원·기록 CRUD를 서버에서 검증해야 합니다. 브라우저 저장소의 PBKDF2 해시는 서버 인증을 대체하지 않습니다.
+```sql
+update public.profiles
+set role = 'admin'
+where id = '관리자-auth-사용자-UUID';
+```
 
-## 데이터 인터페이스
-`assets/auth.js`의 `window.DpsAuth`는 화면 코드와 저장 계층을 분리합니다. 주요 메서드: `signUp`, `signIn`, `signOut`, `getCurrentUser`, `getUserRole`, `getUsers`, `updateUser`, `deleteUsers`, `getRecords`, `saveRecord`, `updateRecord`, `deleteRecord`, `getDashboardData`, `changePassword`. 다음 단계에서는 이 어댑터 내부 구현을 서버 API로 교체하면 됩니다.
+이 SQL은 신뢰할 수 있는 프로젝트 소유자만 실행해야 합니다. 웹 화면에는 역할 승격 기능이 없습니다. 일반 가입자는 트리거에서 항상 `user`로 생성됩니다.
 
-## 기존 기능 보존
-기존 `simulator.html`은 별도 파일로 보존했습니다. 부품 드래그, 중심축 조정, 끼워맞춤, 마운팅, 조립 검사, 실습 테이블과 CSV 기능을 유지합니다.
+## 데이터 구조
+- `profiles`: Auth 사용자와 연결된 프로필
+- `activity_records`: 실습 기록 및 원본 `record_data`
+- `simulator_contents`: 관리자 콘텐츠
+- `app_settings`: 관리자 서비스 설정
+
+실습 저장은 `activity_records.user_id`에 현재 Auth 사용자 UUID를 기록합니다. 조회·수정·삭제 범위는 Supabase RLS 정책이 최종 결정합니다. 관리자 회원 삭제 기능은 서버의 `admin_delete_user(target_user_id)` RPC가 필요합니다.
+
+## 배포
+정적 HTML을 현재 Cloudflare Pages/Workers 정적 호스팅 방식으로 배포하면 됩니다. 별도 빌드 단계는 없습니다. 변경 파일을 GitHub main에 반영한 뒤 Cloudflare의 기존 Git 연동 배포 또는 현재 배포 방식으로 다시 배포하세요.
+
+## 점검 사항
+- Supabase Auth의 Email provider가 활성화되어 있어야 합니다.
+- 이메일 인증을 사용하는 경우 가입 후 인증 메일 링크를 눌러야 로그인할 수 있습니다.
+- Auth URL Configuration의 Site URL 및 Redirect URLs에 실제 배포 도메인과 로그인/가입 경로를 허용해야 합니다.
+- 테이블의 RLS 정책과 권한 부여가 앞서 적용한 SQL과 일치해야 합니다.
+- 기존 localStorage에 있던 체험 계정·실습 기록은 자동으로 Supabase로 이전되지 않습니다.
+- 이 저장소의 브라우저 코드는 실제 Supabase 프로젝트에 접속하지만, 이 작업 과정에서 Supabase SQL 실행, Cloudflare 배포, 실제 브라우저 통합 테스트는 수행하지 않았습니다.
