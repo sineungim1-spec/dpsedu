@@ -13,3 +13,4 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .password-row{display:flex;gap:7px}.password-row input{flex:1;min-width:0}.password-row button{white-space:nowrap}
 footer{max-width:1180px;margin:auto;padding:0 16px 28px;color:var(--muted);font-size:11px}
 @media(max-width:700px){.container{padding:13px 10px}.panel{padding:15px}.grid,.grid3{grid-template-columns:1fr}.site-nav{gap:9px}.stat strong{font-size:23px}th,td{padding:8px;font-size:12px}}
+.dps-nav{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:16px;padding:10px 12px;background:#ffffff18;border:1px solid #ffffff38;border-radius:10px;font-size:13px}.dps-nav a{color:#fff;text-decoration:none;font-weight:700}.dps-nav span{margin-left:auto;color:#dceaf4}.dps-nav button{background:#ffffff22;color:#fff;border:1px solid #ffffff66;border-radius:7px;padding:7px 10px;cursor:pointer}@media(max-width:560px){.dps-nav{gap:9px}.dps-nav span{margin-left:0}}

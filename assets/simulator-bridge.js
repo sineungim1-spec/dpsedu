@@ -1,10 +1,8 @@
+/* The simulator remains usable without an account. Preview activity is saved only when a preview session exists. */
 document.addEventListener('DOMContentLoaded',()=>{
- if(!window.DpsAuth?.getCurrentUser()){
-   location.href='login.html?next=simulator.html';
-   return;
- }
+ const auth=window.DpsAuth;
  window.addEventListener('dps:activity-record',async e=>{
-   if(!window.DpsAuth?.getCurrentUser())return;
-   await window.DpsAuth.saveActivityRecord(e.detail);
+  if(!auth?.getCurrentUser())return;
+  try{await auth.saveActivityRecord(e.detail)}catch(err){console.warn('Preview activity was not saved:',err)}
  });
 });

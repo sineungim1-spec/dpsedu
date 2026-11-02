@@ -1,23 +1,32 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>회원가입 | DPS EDU</title><link rel="stylesheet" href="assets/auth.css"></head><body>
-<header class="auth-header"><nav class="site-nav"><a href="index.html">DPS EDU</a><a href="simulator.html">시뮬레이터</a><a href="mypage.html">마이페이지</a><a href="admin.html" data-admin-link hidden>관리자</a><span class="nav-spacer"></span><span data-user-label>체험 모드</span><button data-logout type="button">로그아웃</button></nav><h1>회원가입</h1><p>동력전달장치 가상 조립 실습 · 3단계 체험 버전</p></header>
-<main class="container narrow"><section class="panel"><h2>회원가입 체험</h2>
- <div class="note warning">체험용 화면입니다. 비밀번호는 일치 여부만 검사하고 저장하지 않습니다. 입력한 이름과 이메일만 현재 브라우저 세션에 체험 프로필로 반영됩니다.</div>
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>회원가입 | DPS EDU</title><link rel="stylesheet" href="assets/auth.css"></head>
+<body><header class="auth-header"><nav class="site-nav"><a href="index.html">DPS EDU</a><a href="simulator.html">시뮬레이터</a><a href="login.html">로그인</a></nav><h1>회원가입</h1><p>이메일·이름·비밀번호를 입력해 주세요.</p></header>
+<main class="container narrow"><section class="panel"><h2>회원가입 정보</h2>
+ <div class="note warning">현재는 3단계 화면 및 입력 검증 단계입니다. 제출해도 실제 계정은 생성되지 않으며, 비밀번호는 저장하거나 전송하지 않습니다. 실제 회원가입은 4단계 Supabase 연결 후 활성화됩니다.</div>
  <form id="signupForm" novalidate>
-  <div class="field"><label for="name">이름 또는 표시 이름</label><input id="name" maxlength="40" required placeholder="홍길동"></div>
-  <div class="field"><label for="email">이메일</label><input id="email" type="email" required placeholder="name@example.com"></div>
-  <div class="field"><label for="pw">비밀번호</label><div class="password-row"><input id="pw" type="password" minlength="8" required placeholder="8자 이상"><button type="button" class="btn" data-toggle="pw">표시</button></div></div>
-  <div class="field"><label for="pw2">비밀번호 확인</label><div class="password-row"><input id="pw2" type="password" required placeholder="비밀번호 다시 입력"><button type="button" class="btn" data-toggle="pw2">표시</button></div></div>
-  <label class="muted"><input id="agree" type="checkbox" required> 체험 모드이며 실제 계정이 생성되지 않는다는 점을 확인했습니다.</label>
-  <button class="btn primary full" type="submit">회원가입 체험하기</button>
- </form><div id="message" class="note" hidden></div><p>이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
-</section></main>
-<script>
+  <div class="field"><label for="email">아이디(이메일 주소)</label><input id="email" type="email" autocomplete="email" maxlength="254" required placeholder="name@example.com"></div>
+  <div class="field"><label for="displayName">이름</label><input id="displayName" type="text" autocomplete="name" maxlength="40" required placeholder="이름을 입력하세요"></div>
+  <div class="field"><label for="password">비밀번호</label><div class="password-row"><input id="password" type="password" autocomplete="new-password" minlength="8" required placeholder="8자 이상 입력"><button type="button" class="btn" id="togglePassword">표시</button></div><small class="muted">8자 이상, 영문과 숫자를 함께 사용하는 것을 권장합니다.</small></div>
+  <button class="btn primary full" type="submit">회원가입 요청 준비</button>
+ </form>
+ <div id="message" class="note" hidden role="status"></div>
+ <p>이미 계정이 있으신가요? <a href="login.html">로그인 화면으로</a></p>
+</section></main><footer>회원가입 입력값 검증만 수행합니다. 실제 인증과 비밀번호 처리는 Supabase Auth 연결 후에만 가능합니다.</footer>
+<script src="assets/auth.js"></script><script>
 const $=id=>document.getElementById(id);
-document.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{const p=$(b.dataset.toggle);p.type=p.type==='password'?'text':'password';b.textContent=p.type==='password'?'표시':'숨기기'});
-$('signupForm').onsubmit=async e=>{e.preventDefault();const name=$('name').value.trim(),email=$('email').value.trim(),pw=$('pw').value,pw2=$('pw2').value,msg=$('message');
-msg.hidden=false;msg.className='note warning';
-if(!name){msg.textContent='이름을 입력해 주세요.';return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='올바른 이메일 형식을 입력해 주세요.';return}
-if(pw.length<8){msg.textContent='비밀번호는 8자 이상 입력해 주세요.';return}if(pw!==pw2){msg.textContent='비밀번호가 서로 일치하지 않습니다.';return}if(!$('agree').checked){msg.textContent='체험 모드 안내에 동의해 주세요.';return}
-await DpsAuth.signUpUser({displayName:name,email});msg.className='note success';msg.textContent='회원가입 화면 체험이 완료되었습니다. 실제 계정은 생성되지 않았습니다.';setTimeout(()=>location.href='mypage.html',700);
-};
-</script><footer>3단계 체험 모드입니다. 실제 인증·권한 검증·서버 저장은 아직 연결되지 않았습니다.</footer><script src="assets/auth.js"></script></body></html>
+$('togglePassword').addEventListener('click',()=>{const p=$('password');p.type=p.type==='password'?'text':'password';$('togglePassword').textContent=p.type==='password'?'표시':'숨기기'});
+$('signupForm').addEventListener('submit',async e=>{
+ e.preventDefault();const email=$('email').value.trim().toLowerCase(),name=$('displayName').value.trim(),password=$('password').value,msg=$('message');
+ msg.hidden=false;msg.className='note warning';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.textContent='올바른 이메일 주소를 입력해 주세요.';$('email').focus();return}
+ if(!name){msg.textContent='이름을 입력해 주세요.';$('displayName').focus();return}
+ if(password.length<8){msg.textContent='비밀번호는 8자 이상이어야 합니다.';$('password').focus();return}
+ if(!/[A-Za-z]/.test(password)||!/[0-9]/.test(password)){msg.textContent='비밀번호에 영문과 숫자를 함께 사용하는 것을 권장합니다. 영문과 숫자를 포함해 다시 입력해 주세요.';$('password').focus();return}
+ DpsAuth.setSignupDraft({displayName:name,email});
+ // Password exists only in this submit handler's memory and is never persisted.
+ const result=await DpsAuth.signUpUser({displayName:name,email,password});
+ msg.textContent=result.message+' 입력한 이름과 이메일만 화면 미리보기용으로 보관하고 로그인 화면으로 이동합니다.';
+ $('password').value='';
+ setTimeout(()=>location.href='login.html',1300);
+});
+</script></body></html>
