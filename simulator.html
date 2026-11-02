@@ -346,7 +346,9 @@ footer{max-width:1450px;margin:0 auto;padding:0 18px 25px;color:#70808e;font-siz
  function record(){
    const p=state.parts,fit=fitInfo[$('fitSelect').value];
    const all=Object.values(p).every(v=>v.mounted)&&Object.values(p).every(v=>Math.abs(v.y)<1);
-   state.logs.push({n:state.logs.length+1,fit:fit.label,be:axisError('bearing'),sh:axisError('shaft'),co:axisError('cover'),mount:Object.values(p).every(v=>v.mounted)?'완료':'미완료',result:all?'양호':'확인 필요'});
+   const record={fit:fit.label,bearingError:axisError('bearing'),shaftError:axisError('shaft'),coverError:axisError('cover'),mountStatus:Object.values(p).every(v=>v.mounted)?'완료':'미완료',result:all?'양호':'확인 필요'};
+   state.logs.push({n:state.logs.length+1,fit:record.fit,be:record.bearingError,sh:record.shaftError,co:record.coverError,mount:record.mountStatus,result:record.result});
+   window.dispatchEvent(new CustomEvent('dps:activity-record',{detail:record}));
    drawLog();setStatus('현재 실험 조건을 기록했습니다. 조건을 바꾸어 두 번째 실험과 비교해 보세요.','ok');
  }
  function drawLog(){
