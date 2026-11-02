@@ -370,8 +370,10 @@ footer{max-width:1450px;margin:0 auto;padding:0 18px 25px;color:#70808e;font-siz
  render();
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-config.js"></script>
 <script src="assets/auth.js"></script>
-<script>if(!DpsAuth.requireLogin()){};</script>
+<script> DpsAuth.requireLogin().then(user=>{ if(!user)return; }).catch(e=>{alert(e.message);location.href='login.html'}); </script>
 <script src="assets/simulator-bridge.js"></script>
 </body>
 </html>
