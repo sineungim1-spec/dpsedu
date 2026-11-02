@@ -7,6 +7,7 @@
  <section class="panel" style="margin-top:14px"><h2>실습 콘텐츠 관리</h2><div class="actions"><input id="newContent" placeholder="새 콘텐츠 이름"><button class="btn primary" id="addContent">콘텐츠 추가</button><button class="btn" id="deleteContents">선택 삭제</button><button class="btn" id="allContents">전체 선택/해제</button></div><div class="table-wrap"><table><thead><tr><th>선택</th><th>콘텐츠명</th><th>교과</th><th>상태</th><th>관리</th></tr></thead><tbody id="contents"></tbody></table></div></section>
  <section class="panel" style="margin-top:14px"><h2>학생 실습 활동 기록</h2><div class="actions"><input id="recordSearch" placeholder="사용자·끼워맞춤 검색"><button class="btn" id="exportCsv">CSV 다운로드</button><button class="btn danger" id="deleteRecords">선택 기록 삭제</button><button class="btn" id="selectRecords">전체 선택/해제</button></div><div class="table-wrap"><table><thead><tr><th>선택</th><th>사용자</th><th>날짜</th><th>끼워맞춤</th><th>축 오차</th><th>결과</th></tr></thead><tbody id="records"></tbody></table></div></section>
 </main>
+<script src="assets/auth.js"></script>
 <script>
 (async()=>{const u=DpsAuth.requireAdmin();if(!u)return;let data=await DpsAuth.getDashboardData(),contents=data.contents;
 const $=id=>document.getElementById(id);$('usersCount').textContent=data.userCount;$('activityCount').textContent=data.activityCount;$('contentCount').textContent=contents.length;
